@@ -1,0 +1,58 @@
+// Prairie Scout database schema.
+// Every real lodge row must be hand-checked by Denen before isSample=false.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Species {
+  PHEASANT
+  GROUSE          // sharp-tailed grouse
+  PRAIRIE_CHICKEN
+  WATERFOWL       // ducks and geese
+  WHITETAIL
+  MULE_DEER
+  TURKEY
+  ANTELOPE        // pronghorn
+}
+
+// Which side of the Missouri River the lodge is on.
+enum Region {
+  EAST_RIVER
+  WEST_RIVER
+}
+
+enum HuntStyle {
+  GUIDED
+  DIY
+  BOTH // offers guided and do-it-yourself packages
+}
+
+model Lodge {
+  id             String    @id @default(cuid())
+  name           String
+  isSample       Boolean   @default(false) // true = fake demo row, never shown as real
+  description    String    @default("")
+  species        Species[]
+  region         Region
+  huntStyle      HuntStyle
+  wildBirds      Boolean   @default(false) // wild birds (vs. released / preserve birds)
+  dogsAllowed    Boolean   @default(false) // hunters may bring their own dogs
+  pricePerPerson Int                       // USD for the whole package (packageDays)
+  priceNotes     String    @default("")    // what the price covers (lodging, meals, guide...)
+  packageDays    Int                       // length of the standard package, in days
+  town           String
+  county         String
+  lat            Float
+  lng            Float
+  maxGroupSize   Int
+  sourceUrl      String                    // where the info came from (lodge website etc.)
+  lastChecked    DateTime?                 // when Denen last verified this row by hand
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
