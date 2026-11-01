@@ -154,5 +154,18 @@ export const lodges = [
     description: "Well-regarded ranch lodge with strong reviews for mixed-bag prairie hunting.",
     amenities: ["Lodging", "Guides", "Meals"],
     website: ""
+  },
+  {
+    id: 13,
+    name: "High Plains Waterfowl Outfitter",
+    state: "NE",
+    city: "Thedford",
+    lat: 41.98,
+    lng: -100.58,
+    species: ["Waterfowl", "Deer"],
+    phone: "Contact via booking site",
+    description: "Sandhills ranch ponds and cattail cover for high plains waterfowl. Private land access in the Nebraska Sandhills.",
+    amenities: ["Private Land", "Lodging available"],
+    website: ""
   }
 ];
