@@ -1,20 +1,25 @@
 # Prairie Scout
 
-Interactive hunting lodge & outfitter finder for the Prairie Pothole Region.
+Interactive hunting lodge & outfitter finder for the Prairie Pothole Region (SD, ND, NE).
 
-Built with Vite + React + MapLibre GL.
+**Live demo:** Import this repo into Vercel for an instant deploy (Vite + React + MapLibre).
 
 ## Features
-- Interactive map of SD, ND, NE and surrounding prairie states
-- Search and filter lodges by state, species, and amenities
-- Lodge details with contact info and descriptions
-- Mobile-friendly outdoor-themed UI
+- Dark-mode interactive map centered on the prairies
+- Search + filter by state and species
+- Click cards or markers to fly to lodges and view details
+- 12 real lodges with phone numbers and descriptions
+- Mobile responsive
 
-## Development
+## Run locally
 ```bash
 npm install
 npm run dev
 ```
 
 ## Deploy
-Linked to Vercel for automatic deploys on push to `main`.
+1. Connect this GitHub repo to Vercel
+2. Framework preset: Vite
+3. Deploy
+
+Data is sample/public directory info for demonstration. Always verify details before booking.

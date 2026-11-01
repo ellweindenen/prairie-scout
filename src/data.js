@@ -9,7 +9,8 @@ export const lodges = [
     species: ["Whitetail", "Pheasant", "Waterfowl"],
     phone: "(701) 840-8409",
     description: "Small family-run hunting lodge along the Sheyenne River & Baldhill Creek Valleys. Privacy and prairie tranquility with newly constructed lodge.",
-    amenities: ["Lodging", "Guides", "Meals"]
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: ""
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ export const lodges = [
     species: ["Pheasant", "Grouse", "Waterfowl", "Deer"],
     phone: "(701) 782-6891",
     description: "4,000+ contiguous acre farm and cattle ranch converted into a hunting lodge. Great for mixed bag hunting.",
-    amenities: ["Lodging", "Private Land"]
+    amenities: ["Lodging", "Private Land"],
+    website: ""
   },
   {
     id: 3,
@@ -33,7 +35,8 @@ export const lodges = [
     species: ["Pheasant", "Whitetail", "Coyote"],
     phone: "(605) 224-5934",
     description: "Open hunting where the birds are big, fast and wild. Hunter's paradise with guides available.",
-    amenities: ["Lodging", "Guides"]
+    amenities: ["Lodging", "Guides"],
+    website: "http://www.huntthelen.com/"
   },
   {
     id: 4,
@@ -45,7 +48,8 @@ export const lodges = [
     species: ["Waterfowl", "Pheasant", "Fishing"],
     phone: "(605) 520-4407",
     description: "Year-round lodge in northeastern South Dakota with apartment-style quarters and great access to glacial lakes.",
-    amenities: ["Lodging", "Meals", "WiFi"]
+    amenities: ["Lodging", "Meals", "WiFi"],
+    website: ""
   },
   {
     id: 5,
@@ -57,7 +61,8 @@ export const lodges = [
     species: ["Waterfowl", "Upland"],
     phone: "(701) 783-4545",
     description: "Combination waterfowl-upland game hunt in the prairie pothole region. All-inclusive 3 day/4 night packages.",
-    amenities: ["Lodging", "Meals", "Guides", "Dogs"]
+    amenities: ["Lodging", "Meals", "Guides", "Dogs"],
+    website: "http://www.prairiepotholelodge.com/"
   },
   {
     id: 6,
@@ -69,7 +74,8 @@ export const lodges = [
     species: ["Waterfowl", "Pheasant"],
     phone: "(605) 887-3362",
     description: "Sits in the middle of the central North American Flyway. Ducks and geese come into the two lakes by the thousands.",
-    amenities: ["Lodging", "Private Water"]
+    amenities: ["Lodging", "Private Water"],
+    website: ""
   },
   {
     id: 7,
@@ -81,18 +87,72 @@ export const lodges = [
     species: ["Pheasant", "Whitetail"],
     phone: "(605) 661-4277",
     description: "Premier pheasant hunting in the heart of South Dakota's ringneck country.",
-    amenities: ["Lodging", "Guides"]
+    amenities: ["Lodging", "Guides"],
+    website: ""
   },
   {
     id: 8,
-    name: "High Plains Waterfowl",
-    state: "NE",
-    city: "Thedford",
-    lat: 41.98,
-    lng: -100.58,
-    species: ["Waterfowl", "Deer"],
-    phone: "Contact via LandTrust",
-    description: "High Plains waterfowl hunt on ranch ponds with cattail cover in the Nebraska Sandhills.",
-    amenities: ["Lodging available", "Private Land"]
+    name: "Thunderstik Lodge",
+    state: "SD",
+    city: "Chamberlain",
+    lat: 43.81,
+    lng: -99.33,
+    species: ["Pheasant", "Waterfowl", "Deer"],
+    phone: "(605) 234-5106",
+    description: "Popular lodge near Chamberlain with excellent ratings for guided hunts on the Missouri River breaks.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: ""
+  },
+  {
+    id: 9,
+    name: "Rieger Creek Lodge",
+    state: "SD",
+    city: "Selby",
+    lat: 45.50,
+    lng: -100.03,
+    species: ["Pheasant", "Waterfowl"],
+    phone: "(605) 845-8851",
+    description: "Highly rated lodge offering premium pheasant and waterfowl hunting experiences.",
+    amenities: ["Lodging", "Guides"],
+    website: ""
+  },
+  {
+    id: 10,
+    name: "Double P Ranch",
+    state: "SD",
+    city: "Clark",
+    lat: 44.88,
+    lng: -97.73,
+    species: ["Pheasant", "Whitetail"],
+    phone: "(651) 357-2764",
+    description: "Family ranch offering quality upland and big game hunting opportunities.",
+    amenities: ["Lodging", "Private Land"],
+    website: ""
+  },
+  {
+    id: 11,
+    name: "Eagle Pass Lodge",
+    state: "SD",
+    city: "Ree Heights",
+    lat: 44.52,
+    lng: -99.20,
+    species: ["Pheasant", "Deer"],
+    phone: "(605) 943-5666",
+    description: "Scenic lodge with excellent hunting on private ground.",
+    amenities: ["Lodging", "Guides"],
+    website: ""
+  },
+  {
+    id: 12,
+    name: "Brown’s Lodge & Hunting Ranch",
+    state: "SD",
+    city: "Gettysburg",
+    lat: 45.01,
+    lng: -99.95,
+    species: ["Pheasant", "Waterfowl", "Deer"],
+    phone: "(605) 765-9150",
+    description: "Well-regarded ranch lodge with strong reviews for mixed-bag prairie hunting.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: ""
   }
 ];
