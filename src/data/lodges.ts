@@ -10,6 +10,7 @@ export type Lodge = {
   description: string;
   amenities: string[];
   website: string;
+  photo?: string;
 };
 
 export const lodges: Lodge[] = [
@@ -23,9 +24,10 @@ export const lodges: Lodge[] = [
     species: ["Whitetail", "Pheasant", "Waterfowl"],
     phone: "(701) 840-8409",
     description:
-      "Small family-run hunting lodge along the Sheyenne River and Baldhill Creek valleys. Privacy and prairie quiet in a newly built lodge.",
+      "Small family-run lodge along the Sheyenne River. Yelp reviewer Victor J M. (Nov. 2023) called a waterfowl and wild pheasant trip first rate: “We limited out daily with bird hunting,” and wrote, “The food is outstanding.”",
     amenities: ["Lodging", "Guides", "Meals"],
     website: "",
+    photo: "/lodges/baldhill.jpg",
   },
   {
     id: 2,
@@ -54,6 +56,7 @@ export const lodges: Lodge[] = [
       "Open hunting where the birds are big, fast, and wild. Guides are available when you want them.",
     amenities: ["Lodging", "Guides"],
     website: "http://www.huntthelen.com/",
+    photo: "/lodges/thelen.jpg",
   },
   {
     id: 4,
@@ -68,6 +71,7 @@ export const lodges: Lodge[] = [
       "Year-round lodge in northeastern South Dakota with apartment-style rooms and easy reach of the glacial lakes.",
     amenities: ["Lodging", "Meals", "WiFi"],
     website: "",
+    photo: "/lodges/glacial.jpg",
   },
   {
     id: 5,
@@ -82,6 +86,7 @@ export const lodges: Lodge[] = [
       "Waterfowl and upland packages in the prairie pothole country. All-inclusive 3-day, 4-night hunts.",
     amenities: ["Lodging", "Meals", "Guides", "Dogs"],
     website: "http://www.prairiepotholelodge.com/",
+    photo: "/lodges/pothole.jpg",
   },
   {
     id: 6,
@@ -96,6 +101,7 @@ export const lodges: Lodge[] = [
       "Sits on the Central Flyway. Ducks and geese stack into the two lakes by the thousands in season.",
     amenities: ["Lodging", "Private Water"],
     website: "",
+    photo: "/lodges/grass.jpg",
   },
   {
     id: 7,
@@ -120,9 +126,10 @@ export const lodges: Lodge[] = [
     species: ["Pheasant", "Waterfowl", "Deer"],
     phone: "(605) 234-5106",
     description:
-      "Guided hunts on the Missouri River breaks, a short hop from Chamberlain.",
+      "Guided hunts on the Missouri River breaks, a short hop from Chamberlain. On his fourth visit, Tripadvisor reviewer Lorne I. (Nov. 2016) wrote, “The guides are the best,” and that “watching the dogs work to find and flush the pheasants is amazing.” Published rates: $2,395 for 1 day/2 nights, $3,595 for 2 days/3 nights, and $4,395 for 3 days/4 nights.",
     amenities: ["Lodging", "Guides", "Meals"],
-    website: "",
+    website: "https://www.thunderstik.com/",
+    photo: "/lodges/thunder.jpg",
   },
   {
     id: 9,
@@ -133,9 +140,11 @@ export const lodges: Lodge[] = [
     lng: -100.03,
     species: ["Pheasant", "Waterfowl"],
     phone: "(605) 845-8851",
-    description: "Pheasant and waterfowl hunts out of a well-known north-central lodge.",
+    description:
+      "Pheasant and waterfowl hunts out of a north-central lodge. Tripadvisor guest JoeAlbertson (Oct. 2020) called it “the finest pheasant lodge in South Dakota,” citing comfortable rooms, great food, and wonderful hunting. A 3-day/4-night hunt is $3,795 per hunter. Day hunts start at $995.",
     amenities: ["Lodging", "Guides"],
-    website: "",
+    website: "https://riegercreeklodge.com/",
+    photo: "/lodges/rieger.jpg",
   },
   {
     id: 10,
@@ -146,9 +155,11 @@ export const lodges: Lodge[] = [
     lng: -97.73,
     species: ["Pheasant", "Whitetail"],
     phone: "(651) 357-2764",
-    description: "Family ranch with upland birds and whitetail on private ground.",
+    description:
+      "Family ranch with upland birds and whitetail on private ground. Tripadvisor reviewer Dini56 (Dec. 2021) wrote, “All of our expectations were exceeded,” after the group limited on roosters each day before lunch. Mid-season 2026 rates: $2,695 for 2 days/3 nights and $3,595 for 3 days/4 nights, per person.",
     amenities: ["Lodging", "Private Land"],
-    website: "",
+    website: "https://www.doublepranch.com/",
+    photo: "/lodges/doublep.jpg",
   },
   {
     id: 11,
@@ -159,9 +170,11 @@ export const lodges: Lodge[] = [
     lng: -99.2,
     species: ["Pheasant", "Deer"],
     phone: "(605) 943-5666",
-    description: "A quieter lodge with pheasant and deer hunting on private acres.",
+    description:
+      "A quieter lodge with pheasant and deer hunting on private acres. Guest Bill Dawley, writing on the lodge site (Oct. 2018), said the pheasant hunting was phenomenal and called the guides, dogs, and food a first-class experience.",
     amenities: ["Lodging", "Guides"],
     website: "",
+    photo: "/lodges/eagle2.jpg",
   },
   {
     id: 12,
@@ -172,9 +185,11 @@ export const lodges: Lodge[] = [
     lng: -99.95,
     species: ["Pheasant", "Waterfowl", "Deer"],
     phone: "(605) 765-9150",
-    description: "Ranch lodge known for mixed-bag prairie hunts west of the river.",
+    description:
+      "Ranch lodge for mixed-bag prairie hunts west of the river. Tripadvisor reviewer Steve Illingworth (Dec. 2022) called it “South Dakota's finest destination for wild pheasant hunting” after his group limited each day.",
     amenities: ["Lodging", "Guides", "Meals"],
     website: "",
+    photo: "/lodges/browns.jpg",
   },
   {
     id: 13,
@@ -189,6 +204,140 @@ export const lodges: Lodge[] = [
       "Sandhills ranch ponds and cattail cover for high-plains waterfowl. Private land in the Nebraska Sandhills.",
     amenities: ["Private Land", "Lodging available"],
     website: "",
+  },
+  {
+    id: 14,
+    name: "Cain Creek Outfitters",
+    state: "SD",
+    city: "Wolsey",
+    lat: 44.443,
+    lng: -98.477,
+    species: ["Pheasant", "Deer"],
+    phone: "(605) 883-4738",
+    description:
+      "Historic 1938 farmhouse lodge on wild-bird ground in Beadle County. No pen-raised birds. A 1-day/1-night hunt is $675 plus 5.5% tax, and a 3-day/4-night stay is $1,950 plus tax, with meals and lodging.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://caincreekoutfitters.com/",
+    photo: "/lodges/cain.jpg",
+  },
+  {
+    id: 15,
+    name: "Wagon Wheel Ranch",
+    state: "SD",
+    city: "Kimball",
+    lat: 43.75,
+    lng: -98.96,
+    species: ["Pheasant"],
+    phone: "(605) 830-2925",
+    description:
+      "Family ranch west of Mitchell with home-cooked meals, bird processing, and a clays course. 2026 packages: 2 days $1,995, 3 days $2,795, 4 days $3,695, and 5 days $4,475.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://www.dakota-pheasant-hunting.com/",
+    photo: "/lodges/wagon.jpg",
+  },
+  {
+    id: 16,
+    name: "Dakota Prairie Lodge",
+    state: "SD",
+    city: "Kimball",
+    lat: 43.72,
+    lng: -98.88,
+    species: ["Pheasant", "Waterfowl"],
+    phone: "(855) 735-6343",
+    description:
+      "Wild-rooster hunts on a Brule County ranch, with ducks and prairie dogs in season. The all-inclusive rate is $1,100 per person per day, covering lodging, meals, drinks, shells, guides, and dogs.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://sd-pheasanthunting.com/",
+    photo: "/lodges/dakota.jpg",
+  },
+  {
+    id: 17,
+    name: "A1 Al's Pheasant Ranch",
+    state: "SD",
+    city: "Emery",
+    lat: 43.602,
+    lng: -97.619,
+    species: ["Pheasant", "Waterfowl"],
+    phone: "(605) 940-4268",
+    description:
+      "A big lodge in a small town, about 15 minutes east of Mitchell, on more than 6,000 acres. All-inclusive stays start at $1,600 per person per day plus tax. Day hunts are $500 plus tax.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://a1als.com/",
+    photo: "/lodges/a1.jpg",
+  },
+  {
+    id: 18,
+    name: "White Lake Hunting Lodge",
+    state: "SD",
+    city: "White Lake",
+    lat: 43.73,
+    lng: -98.71,
+    species: ["Pheasant"],
+    phone: "(605) 770-1295",
+    description:
+      "Family lodge on native grass farmed for pheasants, with home-cooked meals and guides. A published 4-day/5-night hunt is $2,800 plus tax per hunter, including lodging, dogs, ammo, and field lunches.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://www.whitelakehuntinglodge.com/",
+    photo: "/lodges/whitelake.jpg",
+  },
+  {
+    id: 19,
+    name: "Kelly's Limit",
+    state: "ND",
+    city: "Regent",
+    lat: 46.422,
+    lng: -102.559,
+    species: ["Pheasant"],
+    phone: "(701) 471-0635",
+    description:
+      "Small camp on private land in southwestern North Dakota. The Classic hunt is $600 per gun per day with lodging. The Ultimate hunt is $740 per gun per day and adds guides, meals, and bird cleaning.",
+    amenities: ["Lodging", "Private Land"],
+    website: "https://www.kellyslimit.com/",
+    photo: "/lodges/kelly.jpg",
+  },
+  {
+    id: 20,
+    name: "Ringneck Resort",
+    state: "ND",
+    city: "Streeter",
+    lat: 46.657,
+    lng: -99.358,
+    species: ["Pheasant", "Waterfowl"],
+    phone: "(701) 680-9534",
+    description:
+      "Sheyenne River valley lodge that pairs afternoon pheasants with morning ducks and geese. Pheasant packages are $1,795 for 2 days, $2,495 for 3 days, and $3,195 for 4 days, with meals, lodging, shells, and bird cleaning. A North Dakota license, listed at $122, is extra.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://www.ringneckresort.com/",
+    photo: "/lodges/ringneck.jpg",
+  },
+  {
+    id: 21,
+    name: "Clear Creek Upland Game Lodge",
+    state: "NE",
+    city: "Bartlett",
+    lat: 41.885,
+    lng: -98.552,
+    species: ["Pheasant", "Waterfowl"],
+    phone: "(308) 370-1425",
+    description:
+      "A small Sandhills operation for pheasant, chukar, and quail behind bird dogs. Guided packages start at $450, with lodging and home-style meals on the hunt.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://clearcreekuplandgame.com/",
+    photo: "/lodges/clear2.jpg",
+  },
+  {
+    id: 22,
+    name: "Whiskey Sloughs Outfitters",
+    state: "NE",
+    city: "Kearney",
+    lat: 40.625,
+    lng: -99.055,
+    species: ["Pheasant", "Waterfowl"],
+    phone: "(308) 830-3817",
+    description:
+      "Five-bedroom lodge south of Kearney for Platte River ducks and geese and Sandhills upland birds. A 3-day, 3-night upland package is $2,400 per person, including lodging, meals, and bird cleaning.",
+    amenities: ["Lodging", "Guides", "Meals"],
+    website: "https://whiskeysloughs.com/",
   },
 ];
 

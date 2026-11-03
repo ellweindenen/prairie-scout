@@ -219,6 +219,23 @@
   line-height: 1.25;
 }
 
+.lodge-photo,
+.detail-photo {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.lodge-photo {
+  height: 108px;
+  margin-top: 6px;
+}
+
+.detail-photo {
+  height: 168px;
+  margin: 8px 0 4px;
+}
+
 .lodge-meta,
 .scout-foot,
 .detail-place {
@@ -308,6 +325,15 @@
   text-align: center;
 }
 
+.map-status.is-loading {
+  inset: auto 12px auto auto;
+  top: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
 .map-status.is-error {
   color: #f0b4b4;
 }
@@ -386,6 +412,13 @@
 
 .detail-contact a:hover {
   text-decoration: underline;
+}
+
+.detail-contact .copy-note {
+  display: block;
+  color: var(--color-mist);
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .detail-contact svg {

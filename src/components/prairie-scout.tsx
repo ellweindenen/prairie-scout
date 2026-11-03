@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import type { Map as MlMap, Marker } from "maplibre-gl";
 import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?url";
 import { Binoculars, Phone, Search, X } from "lucide-react";
@@ -9,6 +9,38 @@ const SPECIES = ["Waterfowl", "Pheasant", "Deer", "Whitetail"] as const;
 function motionMs(ms: number) {
   if (typeof window === "undefined") return ms;
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : ms;
+}
+
+/** A framed preview cannot open the phone app; a desktop browser errors on tel:. */
+function canPlaceCall() {
+  if (typeof navigator === "undefined" || typeof window === "undefined") return false;
+  if (window.parent !== window) return false;
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function copyText(text: string) {
+  if (navigator.clipboard?.writeText) {
+    return navigator.clipboard.writeText(text).catch(() => copyWithSelection(text));
+  }
+  return copyWithSelection(text);
+}
+
+function copyWithSelection(text: string) {
+  const input = document.createElement("textarea");
+  input.value = text;
+  input.setAttribute("readonly", "");
+  input.style.position = "fixed";
+  input.style.left = "-9999px";
+  document.body.appendChild(input);
+  input.select();
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch {
+    ok = false;
+  }
+  input.remove();
+  return ok ? Promise.resolve() : Promise.reject(new Error("copy failed"));
 }
 
 export function PrairieScout() {
@@ -23,9 +55,16 @@ export function PrairieScout() {
   const [stateFilter, setStateFilter] = useState<"all" | Lodge["state"]>("all");
   const [speciesFilter, setSpeciesFilter] = useState<string>("all");
   const [mapReady, setMapReady] = useState(false);
+  const [tilesLoaded, setTilesLoaded] = useState(false);
+  const [brokenPhotos, setBrokenPhotos] = useState<Set<number>>(() => new Set());
   const [mapError, setMapError] = useState<string | null>(null);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   selectedRef.current = selected;
+
+  useEffect(() => {
+    setCopiedPhone(false);
+  }, [selected?.id]);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim();
@@ -39,7 +78,9 @@ export function PrairieScout() {
       const matchState = stateFilter === "all" || lodge.state === stateFilter;
       const matchSpecies =
         speciesFilter === "all" ||
-        lodge.species.some((species) => species.toLowerCase().includes(speciesFilter.toLowerCase()));
+        lodge.species.some((species) =>
+          species.toLowerCase().includes(speciesFilter.toLowerCase()),
+        );
       return matchSearch && matchState && matchSpecies;
     });
   }, [search, stateFilter, speciesFilter]);
@@ -70,23 +111,32 @@ export function PrairieScout() {
         });
         map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-left");
         let loaded = false;
-        map.on("load", () => {
+        const markLoaded = () => {
+          if (loaded) return;
           loaded = true;
+          window.clearTimeout(slowTimer);
           if (!cancelled) {
-            setMapReady(true);
+            setTilesLoaded(true);
             setMapError(null);
           }
-        });
+        };
+        // "style.load" fires once the basemap style is parsed, well before
+        // every tile has arrived, which is enough to drop the loading note.
+        map.on("style.load", markLoaded);
+        map.on("load", markLoaded);
         map.on("error", (event) => {
           if (loaded || cancelled) return;
           console.warn("Map error:", event.error);
         });
-        window.setTimeout(() => {
+        const slowTimer = window.setTimeout(() => {
           if (!cancelled && !loaded) {
             setMapError("The map tiles didn’t load. The lodge list still works.");
           }
         }, 12000);
         mapRef.current = map;
+        // Pins are DOM markers, so they can go on as soon as the map exists.
+        // Don't wait for every basemap tile, font, and sprite ("load").
+        setMapReady(true);
       } catch (error) {
         console.error(error);
         if (!cancelled) setMapError("The map couldn’t start. The lodge list still works.");
@@ -100,6 +150,7 @@ export function PrairieScout() {
       mapRef.current?.remove();
       mapRef.current = null;
       setMapReady(false);
+      setTilesLoaded(false);
     };
   }, []);
 
@@ -149,6 +200,15 @@ export function PrairieScout() {
 
   const filtersOn = search !== "" || stateFilter !== "all" || speciesFilter !== "all";
 
+  function markPhotoBroken(id: number) {
+    setBrokenPhotos((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  }
+
   function clearFilters() {
     setSearch("");
     setStateFilter("all");
@@ -157,6 +217,18 @@ export function PrairieScout() {
   }
 
   const call = selected ? phoneHref(selected.phone) : null;
+
+  function onCallClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (!selected || canPlaceCall()) return;
+    event.preventDefault();
+    copyText(selected.phone).then(
+      () => {
+        setCopiedPhone(true);
+        window.setTimeout(() => setCopiedPhone(false), 2200);
+      },
+      () => setCopiedPhone(false),
+    );
+  }
 
   return (
     <div className="scout">
@@ -231,6 +303,15 @@ export function PrairieScout() {
                 onClick={() => setSelected(lodge)}
               >
                 <span className="lodge-name">{lodge.name}</span>
+                {lodge.photo && !brokenPhotos.has(lodge.id) ? (
+                  <img
+                    className="lodge-photo"
+                    src={lodge.photo}
+                    alt=""
+                    loading="lazy"
+                    onError={() => markPhotoBroken(lodge.id)}
+                  />
+                ) : null}
                 <span className="lodge-meta">
                   {lodge.city}, {lodge.state}
                 </span>
@@ -247,7 +328,11 @@ export function PrairieScout() {
 
       <section className="map-wrap" aria-label="Lodge map">
         <div id="map" ref={mapContainer} />
-        {!mapReady && !mapError ? <div className="map-status">Loading the prairie…</div> : null}
+        {!tilesLoaded && !mapError ? (
+          <div className="map-status is-loading" role="status">
+            Loading map tiles… {filtered.length} lodges are in the list.
+          </div>
+        ) : null}
         {mapError ? (
           <div className="map-status is-error">
             <p>{mapError}</p>
@@ -255,13 +340,26 @@ export function PrairieScout() {
         ) : null}
         {selected ? (
           <article className="detail-card">
-            <button type="button" className="icon-btn" onClick={() => setSelected(null)} aria-label="Close details">
+            <button
+              type="button"
+              className="icon-btn"
+              onClick={() => setSelected(null)}
+              aria-label="Close details"
+            >
               <X strokeWidth={1.75} />
             </button>
             <p className="detail-place">
               {selected.city}, {STATE_LABEL[selected.state]}
             </p>
             <h2>{selected.name}</h2>
+            {selected.photo && !brokenPhotos.has(selected.id) ? (
+              <img
+                className="detail-photo"
+                src={selected.photo}
+                alt=""
+                onError={() => markPhotoBroken(selected.id)}
+              />
+            ) : null}
             <p className="detail-copy">{selected.description}</p>
             <p className="detail-line">
               <span>Species</span>
@@ -273,13 +371,16 @@ export function PrairieScout() {
             </p>
             <div className="detail-contact">
               {call ? (
-                <a href={call}>
+                <a href={call} onClick={onCallClick}>
                   <Phone strokeWidth={1.75} aria-hidden="true" />
                   {selected.phone}
                 </a>
               ) : (
                 <p>{selected.phone}</p>
               )}
+              {copiedPhone ? (
+                <p className="copy-note">Number copied. Paste it into your phone.</p>
+              ) : null}
               {selected.website ? (
                 <a href={selected.website} target="_blank" rel="noopener noreferrer">
                   Visit website

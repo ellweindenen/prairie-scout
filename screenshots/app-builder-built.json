@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Prairie Scout",
+      "hasCanvas": false,
+      "bodyTextLen": 1466,
+      "bodyTextHash": "30aa6cdbcf2e3c031bb62114a5fb439c51d30979d588346c1cde15aa40150114",
+      "bodyTextPrefix": "PRAIRIE POTHOLE REGION Prairie Scout All states South Dakota Nor",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Prairie Scout",
+      "hasCanvas": false,
+      "bodyTextLen": 1466,
+      "bodyTextHash": "30aa6cdbcf2e3c031bb62114a5fb439c51d30979d588346c1cde15aa40150114",
+      "bodyTextPrefix": "PRAIRIE POTHOLE REGION Prairie Scout All states South Dakota Nor",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: canvas disappeared",
+    "mobile: canvas disappeared"
+  ]
+}
