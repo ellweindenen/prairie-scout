@@ -40,6 +40,7 @@
 }
 
 .scout {
+  position: relative;
   display: grid;
   grid-template-columns: 380px minmax(0, 1fr);
   height: 100dvh;
@@ -495,12 +496,27 @@
   }
 
   .detail-card {
+    position: fixed;
     top: auto;
-    right: 12px;
-    bottom: 12px;
-    left: 12px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: auto;
-    max-height: 46%;
+    max-height: 72dvh;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    border-radius: 18px 18px 0 0;
+    border-bottom: 0;
+    background: var(--color-panel);
+  }
+
+  .detail-card::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin: -6px auto 10px;
+    border-radius: 2px;
+    background: var(--color-line);
   }
 }
 
@@ -508,4 +524,129 @@
   .lodge-card {
     transition: none;
   }
+}
+
+.lodge-list {
+  margin: 0;
+  list-style: none;
+}
+
+.lodge-item {
+  position: relative;
+}
+
+.lodge-item .lodge-card {
+  padding-right: 48px;
+}
+
+.fav-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-mist);
+}
+
+.fav-btn svg,
+.chip svg,
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fav-btn.is-on,
+.chip.is-on,
+.action-btn.is-on {
+  color: var(--color-wheat);
+}
+
+.fav-btn.is-on svg,
+.action-btn.is-on svg {
+  fill: currentColor;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.chip,
+.action-btn {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-night);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.chip:disabled {
+  opacity: 0.6;
+}
+
+.hint,
+.detail-note {
+  margin: 0;
+  color: var(--color-mist) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+
+.detail-card h2:focus {
+  outline: none;
+}
+
+.copy-note {
+  margin: 0 0 8px;
+  color: var(--color-mist);
+  font-size: 12px;
+}
+
+.marker-cluster {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 2px solid var(--color-night);
+  border-radius: 50%;
+  background: var(--color-wheat);
+  color: var(--color-night);
+  font: 700 0.85rem var(--font-sans);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-wheat) 30%, transparent);
+}
+
+.marker-pin.is-active .marker-dot {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+.chip:focus-visible,
+.fav-btn:focus-visible,
+.action-btn:focus-visible,
+.marker-cluster:focus-visible,
+.lodge-card:focus-visible {
+  outline: 2px solid var(--color-wheat);
+  outline-offset: 2px;
 }
