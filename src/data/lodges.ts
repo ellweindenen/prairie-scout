@@ -1,4 +1,18 @@
-export const lodges = [
+export type Lodge = {
+  id: number;
+  name: string;
+  state: "SD" | "ND" | "NE";
+  city: string;
+  lat: number;
+  lng: number;
+  species: string[];
+  phone: string;
+  description: string;
+  amenities: string[];
+  website: string;
+};
+
+export const lodges: Lodge[] = [
   {
     id: 1,
     name: "Baldhill Creek Adventures",
@@ -8,9 +22,10 @@ export const lodges = [
     lng: -97.15,
     species: ["Whitetail", "Pheasant", "Waterfowl"],
     phone: "(701) 840-8409",
-    description: "Small family-run hunting lodge along the Sheyenne River & Baldhill Creek Valleys. Privacy and prairie tranquility with newly constructed lodge.",
+    description:
+      "Small family-run hunting lodge along the Sheyenne River and Baldhill Creek valleys. Privacy and prairie quiet in a newly built lodge.",
     amenities: ["Lodging", "Guides", "Meals"],
-    website: ""
+    website: "",
   },
   {
     id: 2,
@@ -21,9 +36,10 @@ export const lodges = [
     lng: -100.15,
     species: ["Pheasant", "Grouse", "Waterfowl", "Deer"],
     phone: "(701) 782-6891",
-    description: "4,000+ contiguous acre farm and cattle ranch converted into a hunting lodge. Great for mixed bag hunting.",
+    description:
+      "A 4,000-acre farm and cattle ranch turned hunting lodge. Built for mixed-bag days on contiguous private ground.",
     amenities: ["Lodging", "Private Land"],
-    website: ""
+    website: "",
   },
   {
     id: 3,
@@ -34,9 +50,10 @@ export const lodges = [
     lng: -100.35,
     species: ["Pheasant", "Whitetail", "Coyote"],
     phone: "(605) 224-5934",
-    description: "Open hunting where the birds are big, fast and wild. Hunter's paradise with guides available.",
+    description:
+      "Open hunting where the birds are big, fast, and wild. Guides are available when you want them.",
     amenities: ["Lodging", "Guides"],
-    website: "http://www.huntthelen.com/"
+    website: "http://www.huntthelen.com/",
   },
   {
     id: 4,
@@ -47,9 +64,10 @@ export const lodges = [
     lng: -97.25,
     species: ["Waterfowl", "Pheasant", "Fishing"],
     phone: "(605) 520-4407",
-    description: "Year-round lodge in northeastern South Dakota with apartment-style quarters and great access to glacial lakes.",
+    description:
+      "Year-round lodge in northeastern South Dakota with apartment-style rooms and easy reach of the glacial lakes.",
     amenities: ["Lodging", "Meals", "WiFi"],
-    website: ""
+    website: "",
   },
   {
     id: 5,
@@ -60,9 +78,10 @@ export const lodges = [
     lng: -98.05,
     species: ["Waterfowl", "Upland"],
     phone: "(701) 783-4545",
-    description: "Combination waterfowl-upland game hunt in the prairie pothole region. All-inclusive 3 day/4 night packages.",
+    description:
+      "Waterfowl and upland packages in the prairie pothole country. All-inclusive 3-day, 4-night hunts.",
     amenities: ["Lodging", "Meals", "Guides", "Dogs"],
-    website: "http://www.prairiepotholelodge.com/"
+    website: "http://www.prairiepotholelodge.com/",
   },
   {
     id: 6,
@@ -73,9 +92,10 @@ export const lodges = [
     lng: -98.55,
     species: ["Waterfowl", "Pheasant"],
     phone: "(605) 887-3362",
-    description: "Sits in the middle of the central North American Flyway. Ducks and geese come into the two lakes by the thousands.",
+    description:
+      "Sits on the Central Flyway. Ducks and geese stack into the two lakes by the thousands in season.",
     amenities: ["Lodging", "Private Water"],
-    website: ""
+    website: "",
   },
   {
     id: 7,
@@ -86,9 +106,9 @@ export const lodges = [
     lng: -97.95,
     species: ["Pheasant", "Whitetail"],
     phone: "(605) 661-4277",
-    description: "Premier pheasant hunting in the heart of South Dakota's ringneck country.",
+    description: "Pheasant hunting in the middle of South Dakota ringneck country.",
     amenities: ["Lodging", "Guides"],
-    website: ""
+    website: "",
   },
   {
     id: 8,
@@ -99,22 +119,23 @@ export const lodges = [
     lng: -99.33,
     species: ["Pheasant", "Waterfowl", "Deer"],
     phone: "(605) 234-5106",
-    description: "Popular lodge near Chamberlain with excellent ratings for guided hunts on the Missouri River breaks.",
+    description:
+      "Guided hunts on the Missouri River breaks, a short hop from Chamberlain.",
     amenities: ["Lodging", "Guides", "Meals"],
-    website: ""
+    website: "",
   },
   {
     id: 9,
     name: "Rieger Creek Lodge",
     state: "SD",
     city: "Selby",
-    lat: 45.50,
+    lat: 45.5,
     lng: -100.03,
     species: ["Pheasant", "Waterfowl"],
     phone: "(605) 845-8851",
-    description: "Highly rated lodge offering premium pheasant and waterfowl hunting experiences.",
+    description: "Pheasant and waterfowl hunts out of a well-known north-central lodge.",
     amenities: ["Lodging", "Guides"],
-    website: ""
+    website: "",
   },
   {
     id: 10,
@@ -125,9 +146,9 @@ export const lodges = [
     lng: -97.73,
     species: ["Pheasant", "Whitetail"],
     phone: "(651) 357-2764",
-    description: "Family ranch offering quality upland and big game hunting opportunities.",
+    description: "Family ranch with upland birds and whitetail on private ground.",
     amenities: ["Lodging", "Private Land"],
-    website: ""
+    website: "",
   },
   {
     id: 11,
@@ -135,12 +156,12 @@ export const lodges = [
     state: "SD",
     city: "Ree Heights",
     lat: 44.52,
-    lng: -99.20,
+    lng: -99.2,
     species: ["Pheasant", "Deer"],
     phone: "(605) 943-5666",
-    description: "Scenic lodge with excellent hunting on private ground.",
+    description: "A quieter lodge with pheasant and deer hunting on private acres.",
     amenities: ["Lodging", "Guides"],
-    website: ""
+    website: "",
   },
   {
     id: 12,
@@ -151,9 +172,9 @@ export const lodges = [
     lng: -99.95,
     species: ["Pheasant", "Waterfowl", "Deer"],
     phone: "(605) 765-9150",
-    description: "Well-regarded ranch lodge with strong reviews for mixed-bag prairie hunting.",
+    description: "Ranch lodge known for mixed-bag prairie hunts west of the river.",
     amenities: ["Lodging", "Guides", "Meals"],
-    website: ""
+    website: "",
   },
   {
     id: 13,
@@ -164,8 +185,22 @@ export const lodges = [
     lng: -100.58,
     species: ["Waterfowl", "Deer"],
     phone: "Contact via booking site",
-    description: "Sandhills ranch ponds and cattail cover for high plains waterfowl. Private land access in the Nebraska Sandhills.",
+    description:
+      "Sandhills ranch ponds and cattail cover for high-plains waterfowl. Private land in the Nebraska Sandhills.",
     amenities: ["Private Land", "Lodging available"],
-    website: ""
-  }
+    website: "",
+  },
 ];
+
+export const STATE_LABEL: Record<Lodge["state"], string> = {
+  SD: "South Dakota",
+  ND: "North Dakota",
+  NE: "Nebraska",
+};
+
+export function phoneHref(phone: string): string | null {
+  const compact = phone.replace(/[^\d+]/g, "");
+  const digits = compact.replace(/\D/g, "");
+  if (digits.length < 7) return null;
+  return `tel:${compact}`;
+}
